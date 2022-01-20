@@ -1,0 +1,120 @@
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 script.sh
+aiswarya@DESKTOP-923497U:~$ ./script.sh
+welocme to shell scripting
+list of directories
+ Aiswarya pkd
+aiswarya@DESKTOP-923497U:~$ cat script.sh
+#!/bin/bash
+echo "welocme to shell scripting"
+echo "list of directories"
+name=Aiswarya
+city=pkd
+echo " $name $city "
+aiswarya@DESKTOP-923497U:~$ ls -il script.sh
+8162774324717099 -rwxrwxr-- 1 aiswarya aiswarya 117 Jan 20 13:57 script.sh
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 read.sh
+aiswarya@DESKTOP-923497U:~$ ./read.sh
+what is your name:
+Aiswarya
+where is your place:
+pkd
+aiswarya@DESKTOP-923497U:~$ cat read.sh
+#!/bin/bash
+echo what is your name:
+read name
+echo where is your place:
+read place
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 arg.sh
+aiswarya@DESKTOP-923497U:~$ ./arg.sh 23 45 2 12
+the script title is ./arg.sh
+the first argument is 23
+the second argument is 45
+the third argument is 2
+aiswarya@DESKTOP-923497U:~$ cat arg.sh
+echo the script title is $0
+echo the first argument is $1
+echo the second argument is $2
+echo the third argument is $3
+
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 place.sh
+aiswarya@DESKTOP-923497U:~$ ./place.sh
+enter fav place
+mumbai
+ i love mumbai
+aiswarya@DESKTOP-923497U:~$ ./place.sh
+enter fav place
+delhi
+ i love delhi
+aiswarya@DESKTOP-923497U:~$ cat place.sh
+echo "enter fav place"
+read place
+if [ $place = rajasthan ]
+        then echo " i love rajasthan "
+elif [ $place = kerala ]
+        then echo " i love kerala "
+elif [ $place = mumbai ]
+        then echo " i love mumbai "
+        else echo " i love $place "
+fi
+
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ ls
+arg.sh      file1  folder1  foldr.txt  new1.txt  place.sh  script.sh  top1.txt
+assignment  file2  folder2  new.txt    newfldr   read.sh   temp
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 friend.sh
+aiswarya@DESKTOP-923497U:~$ ls -l friend.sh
+-rwxrwxr-- 1 aiswarya aiswarya 100 Jan 20 14:19 friend.sh
+aiswarya@DESKTOP-923497U:~$ ./friend.sh
+abc
+efg
+xyz
+uvw
+aiswarya@DESKTOP-923497U:~$ cat friend.sh
+#!/bin/bash
+friends=("abc" "efg" "xyz" "uvw")
+for frnd in "${friends[@]}"
+        do
+                echo "$frnd"
+        done
+
+aiswarya@DESKTOP-923497U:~$ nano
+aiswarya@DESKTOP-923497U:~$ chmod 774 oddeve.sh
+aiswarya@DESKTOP-923497U:~$ ./oddeve.sh
+enter a number :
+4
+even number
+aiswarya@DESKTOP-923497U:~$ ./oddeve.sh
+enter a number :
+3
+odd number
+aiswarya@DESKTOP-923497U:~$ cat oddeve.sh
+#!/bin/bash
+echo enter a number :
+read number
+if [ $((number % 2)) -eq 0 ]
+        then echo even number
+        else echo odd number
+fi
+
+aiswarya@DESKTOP-923497U:~$ nano funct.sh
+aiswarya@DESKTOP-923497U:~$ chmod funct.sh
+chmod: missing operand after ‘funct.sh’
+Try 'chmod --help' for more information.
+aiswarya@DESKTOP-923497U:~$ chmod 774 funct.sh
+aiswarya@DESKTOP-923497U:~$ ./funct.sh 1 32 56
+function with arguments
+1
+hello, 32
+aiswarya@DESKTOP-923497U:~$ cat funct.sh
+#!/bin/bash
+funct(){
+        echo "function with arguments"
+        echo "$1"
+        echo "hello, $2"
+}
+funct $1 $2

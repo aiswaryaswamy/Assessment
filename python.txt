@@ -1,0 +1,177 @@
+aiswarya@DESKTOP-923497U:~$ python3
+Python 3.8.10 (default, Jun  2 2021, 10:49:15)
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 36/7
+5.142857142857143
+>>> 56-35
+21
+>>> 887+565
+1452
+>>> 789%56
+5
+>>> name="Aiswarya Swamy"
+>>> city="tvm"
+>>> id="3421"
+>>> print("name is "+name+", city:"+city+ " id"+str(id))
+name is Aiswarya Swamy, city:tvm id3421
+>>> print("name is "+name+", city:"+city+ " id: "+str(id))
+name is Aiswarya Swamy, city:tvm id: 3421
+>>> num=578
+>>> if(num<50):
+...     print(num, "is less than 50")
+... else:
+...     print(num, "is more than 50")
+...
+578 is more than 50
+>>> num=278
+>>> if(num<10):
+...     print(num, "is a single digit num")
+... elif(num<100):
+...      print(num, "is a double digit num")
+... elif(num<1000):
+...     print(num, "is a triple digit num")
+...
+278 is a triple digit num
+>>> name =input("enter your name")
+enter your name Aiswarya Swamy
+>>> print(name)
+ Aiswarya Swamy
+>>> city =input("enter city")
+enter city tvm
+>>> print(city)
+ tvm
+>>> fruits =["apple","orange","pineapple","strawberry"]
+>>> print(fruits[1])
+orange
+>>> print(fruits[3])
+strawberry
+>>> for name in fruits:
+...     print(name)
+...
+apple
+orange
+pineapple
+strawberry
+>>> def calculate(num):
+...     if(num>300):
+...             print(num*num)
+...     else:
+...             print(num+num)
+...
+>>> calculate(450)
+202500
+>>> calculate(200)
+400
+>>> class student:
+...     def setstudent(self,id,name,course):
+...             self.id=id
+...             self.name=name
+...             self.course=course
+...     def getstudent(self):
+...             print(self.id, " ", self.name, " ", self.course)
+...
+>>> std = student()
+>>> std.setstudent(123,"Aiswarya","Python")
+>>> std.getstudent()
+123   Aiswarya   Python
+>>> std.setstudent(456,"Manju","Java")
+>>> std.getstudent()
+456   Manju   Java
+>>> mylist=[123,34,56]
+>>> tpl=(132,43,78,mylist)
+>>> tpl
+(132, 43, 78, [123, 34, 56])
+>>> mylist.append(899)
+>>> tpl
+(132, 43, 78, [123, 34, 56, 899])
+>>> mylist.clear()
+>>> tpl
+(132, 43, 78, [])
+>>> tpl1=(1,2,3,4)
+>>> tpl+tpl1
+(132, 43, 78, [], 1, 2, 3, 4)
+>>> tpl1*2
+(1, 2, 3, 4, 1, 2, 3, 4)
+>>> mylist*2
+[]
+>>> tpl
+(132, 43, 78, [])
+>>> mylist.append(89)
+>>> mylist
+[89]
+>>> names={'abc','xyz','efg'}
+>>> names
+{'abc', 'xyz', 'efg'}
+>>> places=('kerala','kashmir','maharashtra')
+>>> sports=['football','basketball,'hockey')
+  File "<stdin>", line 1
+    sports=['football','basketball,'hockey')
+                                    ^
+SyntaxError: invalid syntax
+>>> sports=['football','basketball,'hockey']
+  File "<stdin>", line 1
+    sports=['football','basketball,'hockey']
+                                    ^
+SyntaxError: invalid syntax
+>>> sports=['football','basketball','hockey']
+>>> list1=[names,sports,places]
+>>> list1
+[{'abc', 'xyz', 'efg'}, ['football', 'basketball', 'hockey'], ('kerala', 'kashmir', 'maharashtra')]
+>>> sports.append('cricket')
+>>> sports
+['football', 'basketball', 'hockey', 'cricket']
+>>> sports.insert.insert(3,'golf')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'builtin_function_or_method' object has no attribute 'insert'
+>>> sports.insert(3,'golf')
+>>> sports
+['football', 'basketball', 'hockey', 'golf', 'cricket']
+>>> sports.reverse
+<built-in method reverse of list object at 0x7fe374253400>
+>>> sports.reverse()
+>>> sports
+['cricket', 'golf', 'hockey', 'basketball', 'football']
+>>> sports.sort()
+>>> sports
+['basketball', 'cricket', 'football', 'golf', 'hockey']
+>>> dict={"name":"aiswarya", "location":"tvm", "id":"1234"}
+>>> x=dict.get("name")
+>>> print(x)
+aiswarya
+>>> class Trainee:
+...     def _init_(self,name,id):
+...             self.name=name
+...             self.id=id
+...     def showtrainee(self):
+...             print(self.id, " " , self.name)
+...
+>>> trn=Trainee("abc", 1234)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Trainee() takes no arguments
+>>> trn= Trainee("abc", 1234)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: Trainee() takes no arguments
+>>> class Trainee:
+...     def __init__(self,name,id):
+...             self.name=name
+...             self.id=id
+...     def showtrainee(self):
+...             print(self.id, " " , self.name)
+...
+>>> trn= Trainee("abc", 1234)
+>>> trn.showtrainee()
+1234   abc
+>>> def highestnum(no, no1):
+...     if(no > no1):
+...             print(no, 'is greatest')
+...     else:
+...             print(no1, 'is greatest')
+...
+>>> highestnum(29,45)
+45 is greatest
+>>> highestnum(2000,450)
+2000 is greatest

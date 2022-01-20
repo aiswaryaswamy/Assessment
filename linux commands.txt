@@ -1,0 +1,585 @@
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+aiswarya@DESKTOP-923497U:~$ pwd
+/home/aiswarya
+aiswarya@DESKTOP-923497U:~$ ls
+doc1  file1  file2  folder1  folder2  foldr.txt  new.txt  new1.txt  newfldr  temp
+aiswarya@DESKTOP-923497U:~$ mkdir assignment
+aiswarya@DESKTOP-923497U:~$ cd assignment
+aiswarya@DESKTOP-923497U:~/assignment$ mkdir -p new/file1
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+new
+aiswarya@DESKTOP-923497U:~/assignment$ cd new
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+file1
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls > newfile.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+file1  newfile.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ echo "this is my new file" >newfile.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ echo "this is also a new file" >newfile1.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ echo "this is third text file" >newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat newfile.txt
+this is my new file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat *.txt
+this is my new file
+this is also a new file
+this is third text file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat *.txt > combinefile.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat combinefile.txt
+this is my new file
+this is also a new file
+this is third text file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cd ..
+aiswarya@DESKTOP-923497U:~/assignment$ touch myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is myfile" >myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cat myfile.txt
+this is myfile
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cat myfile.txt
+this is myfile
+this is new line appended in myfile
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "this is new line appended in myfile" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "less command is used as a pager" >> myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cat myfile.txt
+this is myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+this is new line appended in myfile
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+less command is used as a pager
+aiswarya@DESKTOP-923497U:~/assignment$ less myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+myfile.txt  new
+aiswarya@DESKTOP-923497U:~/assignment$ cd new
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat *t*
+this is my new file
+this is also a new file
+this is third text file
+this is my new file
+this is also a new file
+this is third text file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat *l*
+this is my new file
+this is also a new file
+this is third text file
+cat: file1: Is a directory
+this is my new file
+this is also a new file
+this is third text file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat *a*
+cat: '*a*': No such file or directory
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+combinefile.txt  file1  newfile.txt  newfile1.txt  newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ cd ..
+aiswarya@DESKTOP-923497U:~/assignment$ touch new1.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+myfile.txt  new  new1.txt
+aiswarya@DESKTOP-923497U:~/assignment$ mv new1.txt new
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+myfile.txt  new
+aiswarya@DESKTOP-923497U:~/assignment$ cd new
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+combinefile.txt  file1  new1.txt  newfile.txt  newfile1.txt  newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ cd ..
+aiswarya@DESKTOP-923497U:~/assignment$ touch fold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ echo "content of fold1.txt is copied to fold2.txt > fold1.txt
+>
+> q
+> ^C
+aiswarya@DESKTOP-923497U:~/assignment$ echo "content of fold1.txt is copied to fold2.txt" > fold1.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+fold1.txt  fold2.txt  myfile.txt  new
+aiswarya@DESKTOP-923497U:~/assignment$ cp fold1.txt fold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cat fold2.txt
+content of fold1.txt is copied to fold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cat fold1.txt
+content of fold1.txt is copied to fold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ mv fold2.txt renamefold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+fold1.txt  myfile.txt  new  renamefold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ whoami
+aiswarya
+aiswarya@DESKTOP-923497U:~/assignment$ cd
+aiswarya@DESKTOP-923497U:~$ id
+uid=1000(aiswarya) gid=1000(aiswarya) groups=1000(aiswarya),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),117(netdev)
+aiswarya@DESKTOP-923497U:~$ w
+ 10:57:20 up 53 min,  0 users,  load average: 0.52, 0.58, 0.59
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+aiswarya@DESKTOP-923497U:~$ passwd
+Changing password for aiswarya.
+Current password:
+New password:
+Retype new password:
+passwd: password updated successfully
+aiswarya@DESKTOP-923497U:~$ man man
+aiswarya@DESKTOP-923497U:~$ cd /
+aiswarya@DESKTOP-923497U:/$ ls
+bin   dev  home  lib    lib64   media  opt   root  sbin  srv  tmp  var
+boot  etc  init  lib32  libx32  mnt    proc  run   snap  sys  usr
+aiswarya@DESKTOP-923497U:/$ cat etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:111:1::/var/cache/pollinate:/bin/false
+aiswarya:x:1000:1000:,,,:/home/aiswarya:/bin/bash
+aiswarya@DESKTOP-923497U:/$ sudo adduser newuser1
+[sudo] password for aiswarya:
+Adding user `newuser1' ...
+Adding new group `newuser1' (1001) ...
+Adding new user `newuser1' (1001) with group `newuser1' ...
+Creating home directory `/home/newuser1' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for newuser1
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+aiswarya@DESKTOP-923497U:/$ cd
+aiswarya@DESKTOP-923497U:~$ su - newuser1
+Password:
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 4.4.0-19041-Microsoft x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Jan 20 11:05:55 IST 2022
+
+  System load:    0.52      Processes:              9
+  Usage of /home: unknown   Users logged in:        0
+  Memory usage:   87%       IPv4 address for eth2:  172.17.176.1
+  Swap usage:     10%       IPv4 address for wifi0: 192.168.1.5
+
+1 update can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+This message is shown once a day. To disable it please create the
+/home/newuser1/.hushlogin file.
+newuser1@DESKTOP-923497U:~$ mkdir -p new/folder
+newuser1@DESKTOP-923497U:~$ cd new
+newuser1@DESKTOP-923497U:~/new$ touch file1.txt
+newuser1@DESKTOP-923497U:~/new$ mv file1.txt folder
+newuser1@DESKTOP-923497U:~/new$ ls
+folder
+newuser1@DESKTOP-923497U:~/new$ cd folder
+newuser1@DESKTOP-923497U:~/new/folder$ ls
+file1.txt
+newuser1@DESKTOP-923497U:~/new/folder$ cd
+newuser1@DESKTOP-923497U:~$ su -aiswarya
+su: invalid option -- 'a'
+Try 'su --help' for more information.
+newuser1@DESKTOP-923497U:~$ su - aiswarya
+Password:
+aiswarya@DESKTOP-923497U:~$ cat etc/passwd
+cat: etc/passwd: No such file or directory
+aiswarya@DESKTOP-923497U:~$ cd /
+aiswarya@DESKTOP-923497U:/$ cat etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+landscape:x:110:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:111:1::/var/cache/pollinate:/bin/false
+aiswarya:x:1000:1000:,,,:/home/aiswarya:/bin/bash
+newuser1:x:1001:1001:,,,:/home/newuser1:/bin/bash
+aiswarya@DESKTOP-923497U:/$ cd
+aiswarya@DESKTOP-923497U:~$ sudo groupadd devops
+aiswarya@DESKTOP-923497U:~$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,aiswarya
+tty:x:5:syslog
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:aiswarya
+fax:x:21:
+voice:x:22:
+cdrom:x:24:aiswarya
+floppy:x:25:aiswarya
+tape:x:26:
+sudo:x:27:aiswarya
+audio:x:29:aiswarya
+dip:x:30:aiswarya
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:aiswarya
+sasl:x:45:
+plugdev:x:46:aiswarya
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+systemd-timesync:x:104:
+crontab:x:105:
+messagebus:x:106:
+input:x:107:
+kvm:x:108:
+render:x:109:
+syslog:x:110:
+tss:x:111:
+uuidd:x:112:
+tcpdump:x:113:
+ssh:x:114:
+landscape:x:115:
+admin:x:116:
+netdev:x:117:aiswarya
+lxd:x:118:
+aiswarya:x:1000:
+newuser1:x:1001:
+devops:x:1002:
+aiswarya@DESKTOP-923497U:~$ cd assignment
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+fold1.txt  myfile.txt  new  renamefold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls
+fold1.txt  myfile.txt  new  renamefold2.txt
+aiswarya@DESKTOP-923497U:~/assignment$ ls -il myfile.txt
+2251799814176451 -rw-r--r-- 1 aiswarya aiswarya 1871 Jan 20 10:28 myfile.txt
+aiswarya@DESKTOP-923497U:~/assignment$ cd new
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+combinefile.txt  file1  new1.txt  newfile.txt  newfile1.txt  newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls -il
+total 0
+3940649674300636 -rw-r--r-- 1 aiswarya aiswarya   68 Jan 20 10:23 combinefile.txt
+1125899907194148 drwxr-xr-x 1 aiswarya aiswarya 4096 Jan 20 10:17 file1
+2533274790499914 -rw-r--r-- 1 aiswarya aiswarya    0 Jan 20 10:48 new1.txt
+4785074604083022 -rw-r--r-- 1 aiswarya aiswarya   20 Jan 20 10:21 newfile.txt
+8162774325100709 -rw-r--r-- 1 aiswarya aiswarya   24 Jan 20 10:21 newfile1.txt
+1970324837086932 -rw-r--r-- 1 aiswarya aiswarya   24 Jan 20 10:22 newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ rm -- newfile.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+combinefile.txt  file1  new1.txt  newfile1.txt  newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ file new1.txt
+new1.txt: empty
+aiswarya@DESKTOP-923497U:~/assignment/new$ file newfile.txt
+newfile.txt: cannot open `newfile.txt' (No such file or directory)
+aiswarya@DESKTOP-923497U:~/assignment/new$ file newfile1.txt
+newfile1.txt: ASCII text
+aiswarya@DESKTOP-923497U:~/assignment/new$ cd ..
+aiswarya@DESKTOP-923497U:~/assignment$ cd
+aiswarya@DESKTOP-923497U:~$ ls -a
+.              .bash_logout  .motd_shown                assignment  file2    foldr.txt  newfldr
+..             .bashrc       .profile                   doc1        folder1  new.txt    temp
+.bash_history  .landscape    .sudo_as_admin_successful  file1       folder2  new1.txt
+aiswarya@DESKTOP-923497U:~$ cd assignment/new
+aiswarya@DESKTOP-923497U:~/assignment/new$ ls
+combinefile.txt  file1  new1.txt  newfile1.txt  newfile2.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ echo "this is new file" > new1.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ chmod -w new1.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ echo "this is new file" >> new1.txt
+-bash: new1.txt: Permission denied
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat new1.txt
+this is new file
+aiswarya@DESKTOP-923497U:~/assignment/new$ chmod o-r new.txt
+chmod: cannot access 'new.txt': No such file or directory
+aiswarya@DESKTOP-923497U:~/assignment/new$ chmod o-r new1.txt
+aiswarya@DESKTOP-923497U:~/assignment/new$ cat new1.txt
+this is new file
+aiswarya@DESKTOP-923497U:~/assignment/new$ cd
+aiswarya@DESKTOP-923497U:~$ find . -name "*.txt"
+./assignment/fold1.txt
+./assignment/myfile.txt
+./assignment/new/combinefile.txt
+./assignment/new/new1.txt
+./assignment/new/newfile1.txt
+./assignment/new/newfile2.txt
+./assignment/renamefold2.txt
+./foldr.txt
+./new.txt
+./new1.txt
+aiswarya@DESKTOP-923497U:~$ find . -name "*f*.txt"
+./assignment/fold1.txt
+./assignment/myfile.txt
+./assignment/new/combinefile.txt
+./assignment/new/newfile1.txt
+./assignment/new/newfile2.txt
+./assignment/renamefold2.txt
+./foldr.txt
+aiswarya@DESKTOP-923497U:~$ ls
+assignment  doc1  file1  file2  folder1  folder2  foldr.txt  new.txt  new1.txt  newfldr  temp
+aiswarya@DESKTOP-923497U:~$ find . -type d -name "f*"
+./assignment/new/file1
+./file1
+./file2
+./folder1
+./folder2
+aiswarya@DESKTOP-923497U:~$ find . -type d -name "n*"
+./assignment/new
+./newfldr
+aiswarya@DESKTOP-923497U:~$ find . -name doc1 -delete
+aiswarya@DESKTOP-923497U:~$ ls
+assignment  file1  file2  folder1  folder2  foldr.txt  new.txt  new1.txt  newfldr  temp
+aiswarya@DESKTOP-923497U:~$ nano top1.txt
+aiswarya@DESKTOP-923497U:~$ cat top.txt
+cat: top.txt: No such file or directory
+aiswarya@DESKTOP-923497U:~$ cat top1.txt
+this is nano editor
+aiswarya@DESKTOP-923497U:~$ uptime
+ 11:47:13 up  1:43,  0 users,  load average: 0.52, 0.58, 0.59
+aiswarya@DESKTOP-923497U:~$ free
+              total        used        free      shared  buff/cache   available
+Mem:        4057484     3491772      336360       17720      229352      431980
+Swap:      12582912     1385028    11197884
+aiswarya@DESKTOP-923497U:~$ pmap
+
+Usage:
+ pmap [options] PID [PID ...]
+
+Options:
+ -x, --extended              show details
+ -X                          show even more details
+            WARNING: format changes according to /proc/PID/smaps
+ -XX                         show everything the kernel provides
+ -c, --read-rc               read the default rc
+ -C, --read-rc-from=<file>   read the rc from file
+ -n, --create-rc             create new default rc
+ -N, --create-rc-to=<file>   create new rc to file
+            NOTE: pid arguments are not allowed with -n, -N
+ -d, --device                show the device format
+ -q, --quiet                 do not display header and footer
+ -p, --show-path             show path in the mapping
+ -A, --range=<low>[,<high>]  limit results to the given range
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see pmap(1).
+aiswarya@DESKTOP-923497U:~$ top
+top - 11:49:52 up  1:46,  0 users,  load average: 0.52, 0.58, 0.59
+Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 14.6 us, 24.2 sy,  0.0 ni, 60.1 id,  0.0 wa,  1.1 hi,  0.0 si,  0.0 st
+MiB Mem :   3962.4 total,    301.4 free,   3437.0 used,    224.0 buff/cache
+MiB Swap:  12288.0 total,  10942.1 free,   1345.9 used.    394.8 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    1 root      20   0    8944    132    100 S   0.0   0.0   0:00.25 init
+   40 root      20   0    8944    132     88 S   0.0   0.0   0:00.01 init
+   41 aiswarya  20   0   18084    152    132 S   0.0   0.0   0:01.32 bash
+  147 root      20   0   18412    136    120 S   0.0   0.0   0:00.07 su
+  148 newuser1  20   0   18076    148    112 S   0.0   0.0   0:00.27 bash
+  217 root      20   0   18412    124    124 S   0.0   0.0   0:00.06 su
+  218 aiswarya  20   0   18076    508    412 S   0.0   0.0   0:00.94 bash
+  271 aiswarya  20   0   18920   1564   1036 R   0.0   0.0   0:00.12 top
+
+
+aiswarya@DESKTOP-923497U:~$ htop
+aiswarya@DESKTOP-923497U:~$ ps
+  PID TTY          TIME CMD
+   41 tty1     00:00:01 bash
+  218 tty1     00:00:00 bash
+  273 tty1     00:00:00 ps
+aiswarya@DESKTOP-923497U:~$ info
+aiswarya@DESKTOP-923497U:~$ env
+SHELL=/bin/bash
+PWD=/home/aiswarya
+LOGNAME=aiswarya
+HOME=/home/aiswarya
+LANG=C.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LESSCLOSE=/usr/bin/lesspipe %s %s
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=aiswarya
+SHLVL=1
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+MAIL=/var/mail/aiswarya
+_=/usr/bin/env
+OLDPWD=/home/aiswarya/assignment/new
+aiswarya@DESKTOP-923497U:~$ last
+
+wtmp begins Sat Jan  8 21:32:21 2022
+aiswarya@DESKTOP-923497U:~$ df
+Filesystem     1K-blocks     Used Available Use% Mounted on
+rootfs         104830276 51442468  53387808  50% /
+none           104830276 51442468  53387808  50% /dev
+none           104830276 51442468  53387808  50% /run
+none           104830276 51442468  53387808  50% /run/lock
+none           104830276 51442468  53387808  50% /run/shm
+none           104830276 51442468  53387808  50% /run/user
+tmpfs          104830276 51442468  53387808  50% /sys/fs/cgroup
+C:\            104830276 51442468  53387808  50% /mnt/c
+D:\            144585724    99756 144485968   1% /mnt/d
