@@ -1,0 +1,1226 @@
+Docker commands
+Play with docker terminal
+
+
+##############################################################
+#                          WARNING!!!!                        #
+# This is a sandbox environment. Using personal credentials   #
+# is HIGHLY! discouraged. Any consequences of doing so are    #
+# completely the user's responsibilites.                      #
+#                                                             #
+# The PWD team.                                               #
+###############################################################
+[node1] (local) root@192.168.0.28 ~
+$     git clone https://github.com/dockersamples/linux_tweet_app
+Cloning into 'linux_tweet_app'...
+remote: Enumerating objects: 14, done.
+remote: Total 14 (delta 0), reused 0 (delta 0), pack-reused 14
+Receiving objects: 100% (14/14), 10.76 KiB | 10.76 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+[node1] (local) root@192.168.0.28 ~
+$  docker container run alpine hostname
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+59bf1c3509f3: Pull complete
+Digest: sha256:21a3deaa0d32a8057914f36584b5288d2e5ecc984380bc0118285c70fa8c9300
+Status: Downloaded newer image for alpine:latest
+a8f49060b07d
+[node1] (local) root@192.168.0.28 ~
+$  docker container ls --all
+CONTAINER ID   IMAGE     COMMAND      CREATED          STATUS  PORTS     NAMES
+a8f49060b07d   alpine    "hostname"   15 seconds ago   Exited (0) 13 seconds ago            sad_ritchie
+[node1] (local) root@192.168.0.28 ~
+$  docker container run --interactive --tty --rm ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+ea362f368469: Pull complete
+Digest: sha256:b5a61709a9a44284d88fb12e5c48db0409cfad5b69d4ff8224077c57302df9cf
+Status: Downloaded newer image for ubuntu:latest
+root@8307593f57b3:/# ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+root@8307593f57b3:/# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.5  0.0   4108  3592 pts/0    Ss   05:39   0:00 bash
+root        11  0.0  0.0   5896  2848 pts/0    R+   05:39   0:00 ps aux
+root@8307593f57b3:/# cat /etc/issue
+Ubuntu 20.04.3 LTS \n \l
+
+root@8307593f57b3:/#  exit
+exit
+[node1] (local) root@192.168.0.28 ~
+$  cat /etc/issue
+Welcome to Alpine Linux 3.12
+Kernel \r on an \m (\l)
+
+[node1] (local) root@192.168.0.28 ~
+$  docker container run \
+>  --detach \
+>  --name mydb \
+>  -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+>  mysql:latest
+Unable to find image 'mysql:latest' locally
+latest: Pulling from library/mysql
+72a69066d2fe: Pull complete
+93619dbc5b36: Pull complete
+99da31dd6142: Pull complete
+626033c43d70: Pull complete
+37d5d7efb64e: Pull complete
+ac563158d721: Pull complete
+d2ba16033dad: Pull complete
+688ba7d5c01a: Pull complete
+00e060b6d11d: Pull complete
+1c04857f594f: Pull complete
+4d7cfa90e6ea: Pull complete
+e0431212d27d: Pull complete
+Digest: sha256:e9027fe4d91c0153429607251656806cc784e914937271037f7738bd5b8e7709
+Status: Downloaded newer image for mysql:latest
+dfb7a6d3ad385204f7258076f21f68949fd0e4471002b99ae679c6c89b08c56c
+[node1] (local) root@192.168.0.28 ~
+$  docker container ls
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS      PORTS                 NAMES
+dfb7a6d3ad38   mysql:latest   "docker-entrypoint.s…"   10 seconds ago   Up 9 seconds   3306/tcp, 33060/tcp   mydb
+[node1] (local) root@192.168.0.28 ~
+$  docker container logs mydb
+2022-01-08 05:40:24+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.27-1debian10 started.
+2022-01-08 05:40:25+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2022-01-08 05:40:25+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.0.27-1debian10 started.
+2022-01-08 05:40:25+00:00 [Note] [Entrypoint]: Initializing database files
+2022-01-08T05:40:25.195086Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.0.27) initializing of server in progress as process 42
+2022-01-08T05:40:25.205166Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-01-08T05:40:25.578626Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-01-08T05:40:26.983608Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-01-08T05:40:26.983646Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-01-08T05:40:27.031447Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2022-01-08 05:40:29+00:00 [Note] [Entrypoint]: Database files initialized
+2022-01-08 05:40:29+00:00 [Note] [Entrypoint]: Starting temporary server
+2022-01-08T05:40:30.026781Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 91
+2022-01-08T05:40:30.053121Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-01-08T05:40:30.248174Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-01-08T05:40:30.537728Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-01-08T05:40:30.537768Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-01-08T05:40:30.539131Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-01-08T05:40:30.539208Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-01-08T05:40:30.540291Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-01-08T05:40:30.575572Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+2022-01-08T05:40:30.575684Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+2022-01-08 05:40:30+00:00 [Note] [Entrypoint]: Temporary server started.
+Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skippingit.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+
+2022-01-08 05:40:34+00:00 [Note] [Entrypoint]: Stopping temporary server
+2022-01-08T05:40:34.162027Z 10 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.0.27).
+2022-01-08T05:40:35.104156Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.27)  MySQL Community Server - GPL.
+2022-01-08 05:40:35+00:00 [Note] [Entrypoint]: Temporary server stopped
+
+2022-01-08 05:40:35+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+
+2022-01-08T05:40:35.516762Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.0.27) starting as process 1
+2022-01-08T05:40:35.532601Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2022-01-08T05:40:35.746192Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2022-01-08T05:40:35.998172Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1 is enabled for channel mysql_main
+2022-01-08T05:40:35.998229Z 0 [Warning] [MY-013746] [Server] A deprecated TLS version TLSv1.1 is enabled for channel mysql_main
+2022-01-08T05:40:35.999326Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2022-01-08T05:40:35.999387Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2022-01-08T05:40:36.000497Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2022-01-08T05:40:36.025782Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2022-01-08T05:40:36.026123Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[node1] (local) root@192.168.0.28 ~
+$    docker container top mydb
+PID                 USER                TIME                COMMAND
+2019                999                 0:00                mysqld
+[node1] (local) root@192.168.0.28 ~
+$  docker exec -it mydb \
+>  mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql  Ver 8.0.27 for Linux on x86_64 (MySQL Community Server - GPL)
+[node1] (local) root@192.168.0.28 ~
+$  docker exec -it mydb sh
+#  mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql  Ver 8.0.27 for Linux on x86_64 (MySQL Community Server - GPL)
+#  exit
+[node1] (local) root@192.168.0.28 ~
+$  cd ~/linux_tweet_app
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  cat Dockerfile
+FROM nginx:latest
+
+COPY index.html /usr/share/nginx/html
+COPY linux.png /usr/share/nginx/html
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]
+
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker image build --tag aiswarya99/linux_tweet_app:1.0 .
+Sending build context to Docker daemon  92.16kB
+Step 1/5 : FROM nginx:latest
+latest: Pulling from library/nginx
+a2abf6c4d29d: Pull complete
+a9edb18cadd1: Pull complete
+589b7251471a: Pull complete
+186b1aaa4aa6: Pull complete
+b4df32aa5a72: Pull complete
+a0bcbecc962e: Pull complete
+Digest: sha256:0d17b565c37bcbd895e9d92315a05c1c3c9a29f762b011a10c54a66cd53c9b31
+Status: Downloaded newer image for nginx:latest
+ ---> 605c77e624dd
+Step 2/5 : COPY index.html /usr/share/nginx/html
+ ---> ba0b9d14db64
+Step 3/5 : COPY linux.png /usr/share/nginx/html
+ ---> fee47c8f761f
+Step 4/5 : EXPOSE 80 443
+ ---> Running in 041dd41541a9
+Removing intermediate container 041dd41541a9
+ ---> fbdfb4f62cb4
+Step 5/5 : CMD ["nginx", "-g", "daemon off;"]
+ ---> Running in 0261ae7aeb9a
+Removing intermediate container 0261ae7aeb9a
+ ---> 28b52b069f57
+Successfully built 28b52b069f57
+Successfully tagged aiswarya99/linux_tweet_app:1.0
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker container run \
+>  --detach \
+>  --publish 80:80 \
+>  --name linux_tweet_app \
+>  aiswarya99/linux_tweet_app:1.0
+149d1c48b564544dfde706923434462b4d4cdd347a194e8c0cd21db54e5c3ec0
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker container rm --force linux_tweet_app
+linux_tweet_app
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker container run \
+>  --detach \
+>  --publish 80:80 \
+>  --name linux_tweet_app \
+>  --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html \
+>  aiswarya99/linux_tweet_app:1.0
+18c1e6cbd9e7edc7f12b412ed4287b426e32eb21d3d5e5da45a8699dc8ad2ee9
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  cp index-new.html index.html
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker rm --force linux_tweet_app
+linux_tweet_app
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker container run \
+> --detach \
+> --publish 80:80 \
+> --name linux_tweet_app \
+> aiswarya99/linux_tweet_app:1.0
+f7562df1246c79ce0e7ee5dbc0e7bb48c6847bb004027405392faf7c49ddb1b1
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker rm --force linux_tweet_app
+linux_tweet_app
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker image build --tag aiswarya99/linux_tweet_app:2.0 .
+Sending build context to Docker daemon  92.16kB
+Step 1/5 : FROM nginx:latest
+ ---> 605c77e624dd
+Step 2/5 : COPY index.html /usr/share/nginx/html
+ ---> 866451d8e0e6
+Step 3/5 : COPY linux.png /usr/share/nginx/html
+ ---> f1b754043d1a
+Step 4/5 : EXPOSE 80 443
+ ---> Running in 0f12be981d24
+Removing intermediate container 0f12be981d24
+ ---> 919d3aba7609
+Step 5/5 : CMD ["nginx", "-g", "daemon off;"]
+ ---> Running in 695b3e3763ad
+Removing intermediate container 695b3e3763ad
+ ---> ec560cb70232
+Successfully built ec560cb70232
+Successfully tagged aiswarya99/linux_tweet_app:2.0
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker image ls
+REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
+aiswarya99/linux_tweet_app   2.0       ec560cb70232   3 seconds ago    142MB
+aiswarya99/linux_tweet_app   1.0       28b52b069f57   13 minutes ago   142MB
+ubuntu                      latest    d13c942271d6   28 hours ago     72.8MB
+nginx                       latest    605c77e624dd   9 days ago       141MB
+mysql                       latest    3218b38490ce   2 weeks ago      516MB
+alpine                      latest    c059bfaa849c   6 weeks ago      5.59MB
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker container run \
+> --detach \
+> --publish 80:80 \
+> --name linux_tweet_app \
+> aiswarya99/linux_tweet_app:2.0
+eec045bb2faea7d5f6e875d0d09e044b737617cf4463cb988731f2e59e180d8c
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker container run \
+> --detach \
+> --publish 8080:80 \
+> --name old_linux_tweet_app \
+> aiswarya99/linux_tweet_app:1.0
+0c0bc3c6224f01336191e085ff333c8fa489436fb4a6796e8c79df5caffb37ff
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker image ls -f reference="aiswarya99/*"
+REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
+aiswarya99/linux_tweet_app   2.0       ec560cb70232   3 minutes ago    142MB
+aiswarya99/linux_tweet_app   1.0       28b52b069f57   17 minutes ago   142MB
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker image push aiswarya99/linux_tweet_app:1.0
+The push refers to repository [docker.io/aiswarya99/linux_tweet_app]
+6151267c8ac0: Pushed
+daaafc0576c6: Pushed
+d874fd2bc83b: Mounted from library/nginx
+32ce5f6a5106: Mounted from library/nginx
+f1db227348d0: Mounted from library/nginx
+b8d6e692a25e: Mounted from library/nginx
+e379e8aedd4d: Mounted from library/nginx
+2edcec3590a4: Layer already exists
+1.0: digest: sha256:eeea3a7d3b5f88b4bdc19f3e4a21b3adc1d9889d01eb0521cf5d47e51dfaf708 size: 1985
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$  docker image push aiswarya99/linux_tweet_app:2.0
+The push refers to repository [docker.io/aiswarya99/linux_tweet_app]
+440fcf08e0e5: Pushed
+7a87ed3aebb0: Pushed
+d874fd2bc83b: Layer already exists
+32ce5f6a5106: Layer already exists
+f1db227348d0: Layer already exists
+b8d6e692a25e: Layer already exists
+e379e8aedd4d: Layer already exists
+2edcec3590a4: Layer already exists
+2.0: digest: sha256:1af6b3f3618b9f3f58556f8fc1c5e37007b8fd9ada7de71eec1e6c75c51bb8e3 size: 1985
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$ docker logout
+Removing login credentials for https://index.docker.io/v1/
+[node1] (local) root@192.168.0.28 ~/linux_tweet_app
+$
+
+
+
+Play With DOCKER 2
+Application Containerization and Microservice Orchestration
+
+###############################################################
+#                          WARNING!!!!                        #
+# This is a sandbox environment. Using personal credentials   #
+# is HIGHLY! discouraged. Any consequences of doing so are    #
+# completely the user's responsibilites.                      #
+#                                                             #
+# The PWD team.                                               #
+###############################################################
+[node1] (local) root@192.168.0.28 ~
+$ git clone https://github.com/ibnesayeed/linkextractor.git
+Cloning into 'linkextractor'...
+remote: Enumerating objects: 144, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 144 (delta 0), reused 1 (delta 0), pack-reused 140
+Receiving objects: 100% (144/144), 44.55 KiB | 11.14 MiB/s, done.
+Resolving deltas: 100% (43/43), done.
+[node1] (local) root@192.168.0.28 ~
+$ cd linkextractor
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout demo
+Branch 'demo' set up to track remote branch 'demo' from 'origin'.
+Switched to a new branch 'demo'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step0
+Branch 'step0' set up to track remote branch 'step0' from 'origin'.
+Switched to a new branch 'step0'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── README.md
+└── linkextractor.py
+
+0 directories, 2 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat linkextractor.py
+#!/usr/bin/env python
+
+import sys
+import requests
+from bs4 import BeautifulSoup
+
+res = requests.get(sys.argv[-1])
+soup = BeautifulSoup(res.text, "html.parser")
+for link in soup.find_all("a"):
+    print(link.get("href"))
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ ./linkextractor.py http://example.com/
+bash: ./linkextractor.py: Permission denied
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ ls -l linkextractor.py
+-rw-r--r--    1 root     root           220 Jan  8 06:20 linkextractor.py
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ python3 linkextractor.py
+Traceback (most recent call last):
+  File "linkextractor.py", line 5, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step1
+Branch 'step1' set up to track remote branch 'step1' from 'origin'.
+Switched to a new branch 'step1'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── Dockerfile
+├── README.md
+└── linkextractor.py
+
+0 directories, 3 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat Dockerfile
+FROM       python:3
+LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+
+RUN        pip install beautifulsoup4
+RUN        pip install requests
+
+WORKDIR    /app
+COPY       linkextractor.py /app/
+RUN        chmod a+x linkextractor.py
+
+ENTRYPOINT ["./linkextractor.py"]
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker image build -t linkextractor:step1 .
+Sending build context to Docker daemon  107.5kB
+Step 1/8 : FROM       python:3
+3: Pulling from library/python
+0e29546d541c: Pull complete
+9b829c73b52b: Pull complete
+cb5b7ae36172: Pull complete
+6494e4811622: Pull complete
+6f9f74896dfa: Pull complete
+fcb6d5f7c986: Pull complete
+290438add9da: Pull complete
+ab11df61f44a: Pull complete
+de4793a5fa46: Pull complete
+Digest: sha256:dbbfcbf95f6b596d2be1d8f3b368016619f78f829facf6f2e361bea1151794e5
+Status: Downloaded newer image for python:3
+ ---> a5d7930b60cc
+Step 2/8 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Running in ec554c79fcdf
+Removing intermediate container ec554c79fcdf
+ ---> 1e03af00fbe8
+Step 3/8 : RUN        pip install beautifulsoup4
+ ---> Running in 8712f54f8382
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.10.0-py3-none-any.whl (97 kB)
+Collecting soupsieve>1.2
+  Downloading soupsieve-2.3.1-py3-none-any.whl (37 kB)
+Installing collected packages: soupsieve, beautifulsoup4
+Successfully installed beautifulsoup4-4.10.0 soupsieve-2.3.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+Removing intermediate container 8712f54f8382
+ ---> dc1e052c73d4
+Step 4/8 : RUN        pip install requests
+ ---> Running in c19150d75c9a
+Collecting requests
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.10-py3-none-any.whl (39 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.8-py2.py3-none-any.whl (138 kB)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.3-py3-none-any.whl (61 kB)
+Installing collected packages: urllib3, idna, charset-normalizer, certifi, requests
+Successfully installed certifi-2021.10.8 charset-normalizer-2.0.10 idna-3.3 requests-2.27.1 urllib3-1.26.8
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+Removing intermediate container c19150d75c9a
+ ---> 35cbf6b91d29
+Step 5/8 : WORKDIR    /app
+ ---> Running in 67b784c1cab8
+Removing intermediate container 67b784c1cab8
+ ---> 3857b6ab35cb
+Step 6/8 : COPY       linkextractor.py /app/
+ ---> 549d42e0c9cd
+Step 7/8 : RUN        chmod a+x linkextractor.py
+ ---> Running in c4aed7103418
+Removing intermediate container c4aed7103418
+ ---> 59e12072e386
+Step 8/8 : ENTRYPOINT ["./linkextractor.py"]
+ ---> Running in 48b21138a961
+Removing intermediate container 48b21138a961
+ ---> 0c8f80ccf8e5
+Successfully built 0c8f80ccf8e5
+Successfully tagged linkextractor:step1
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker image ls
+REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
+linkextractor   step1     0c8f80ccf8e5   2 seconds ago   927MB
+python          3         a5d7930b60cc   2 weeks ago     917MB
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -it --rm linkextractor:step1 http://example.com/
+https://www.iana.org/domains/example
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/
+/
+/about/
+#ops
+#dev
+/ops-stage1
+/ops-stage2
+/ops-stage3
+/dev-stage1
+/dev-stage2
+/dev-stage3
+/alacart
+https://twitter.com/intent/tweet?text=Play with Docker Classroom&url=https://training.play-with-docker.com/&via=docker&related=docker
+https://facebook.com/sharer.php?u=https://training.play-with-docker.com/
+https://plus.google.com/share?url=https://training.play-with-docker.com/
+http://www.linkedin.com/shareArticle?mini=true&url=https://training.play-with-docker.com/&title=Play%20with%20Docker%20Classroom&source=https://training.play-with-docker.com
+https://www.docker.com/dockercon/
+https://www.docker.com/dockercon/
+https://dockr.ly/slack
+https://www.docker.com/legal/docker-terms-service
+https://www.docker.com
+https://www.facebook.com/docker.run
+https://twitter.com/docker
+https://www.github.com/play-with-docker/play-with-docker.github.io
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -it --rm linkextractor:step1 http://google.com/http://www.google.com/imghp?hl=en&tab=wi
+http://maps.google.com/maps
+https://play.google.com/
+http://www.youtube.com/
+https://news.google.com/
+https://mail.google.com/mail/
+https://drive.google.com/
+.....
+/intl/en/about.html
+/intl/en/policies/privacy/
+/intl/en/policies/terms/
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$
+
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step2
+Branch 'step2' set up to track remote branch 'step2' from 'origin'.
+Switched to a new branch 'step2'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── Dockerfile
+├── README.md
+└── linkextractor.py
+
+0 directories, 3 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat linkextractor.py
+#!/usr/bin/env python
+
+import sys
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
+def extract_links(url):
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, "html.parser")
+    base = url
+    # TODO: Update base if a <base> element is present with the href attribute
+    links = []
+    for link in soup.find_all("a"):
+        links.append({
+            "text": " ".join(link.text.split()) or "[IMG]",
+            "href": urljoin(base, link.get("href"))
+        })
+    return links
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("\nUsage:\n\t{} <URL>\n".format(sys.argv[0]))
+        sys.exit(1)
+    for link in extract_links(sys.argv[-1]):
+        print("[{}]({})".format(link["text"], link["href"]))
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker image build -t linkextractor:step2 .
+Sending build context to Docker daemon  110.1kB
+Step 1/8 : FROM       python:3
+ ---> a5d7930b60cc
+Step 2/8 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Using cache
+ ---> 1e03af00fbe8
+Step 3/8 : RUN        pip install beautifulsoup4
+ ---> Using cache
+ ---> dc1e052c73d4
+Step 4/8 : RUN        pip install requests
+ ---> Using cache
+ ---> 35cbf6b91d29
+Step 5/8 : WORKDIR    /app
+ ---> Using cache
+ ---> 3857b6ab35cb
+Step 6/8 : COPY       linkextractor.py /app/
+ ---> 65fc03028c79
+Step 7/8 : RUN        chmod a+x linkextractor.py
+ ---> Running in 9202163767cd
+Removing intermediate container 9202163767cd
+ ---> 01598794a505
+Step 8/8 : ENTRYPOINT ["./linkextractor.py"]
+ ---> Running in b65487bee0f3
+Removing intermediate container b65487bee0f3
+ ---> be9051fb8d53
+Successfully built be9051fb8d53
+Successfully tagged linkextractor:step2
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker image ls
+REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
+linkextractor   step2     be9051fb8d53   1 second ago    927MB
+linkextractor   step1     0c8f80ccf8e5   3 minutes ago   927MB
+python          3         a5d7930b60cc   2 weeks ago     917MB
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -it --rm linkextractor:step2 https://training.play-with-docker.com/
+[Play with Docker classroom](https://training.play-with-docker.com/)
+[About](https://training.play-with-docker.com/about/)
+[IT Pros and System Administrators](https://training.play-with-docker.com/#ops)
+[Developers](https://training.play-with-docker.com/#dev)
+[Stage 1: The Basics](https://training.play-with-docker.com/ops-stage1)
+[Stage 2: Digging Deeper](https://training.play-with-docker.com/ops-stage2)
+[Stage 3: Moving to Production](https://training.play-with-docker.com/ops-stage3)
+[Stage 1: The Basics](https://training.play-with-docker.com/dev-stage1)
+[Stage 2: Digging Deeper](https://training.play-with-docker.com/dev-stage2)
+[Stage 3: Moving to Staging](https://training.play-with-docker.com/dev-stage3)
+[Full list of individual labs](https://training.play-with-docker.com/alacart)
+[[IMG]](https://twitter.com/intent/tweet?text=Play with Docker Classroom&url=https://training.play-with-docker.com/&via=docker&related=docker)
+[[IMG]](https://facebook.com/sharer.php?u=https://training.play-with-docker.com/)
+[[IMG]](https://plus.google.com/share?url=https://training.play-with-docker.com/)
+[[IMG]](http://www.linkedin.com/shareArticle?mini=true&url=https://training.play-with-docker.com/&title=Play%20with%20Docker%20Classroom&source=https://training.play-with-docker.com)
+[[IMG]](https://www.docker.com/dockercon/)
+[Sign up today](https://www.docker.com/dockercon/)
+[Register here](https://dockr.ly/slack)
+[here](https://www.docker.com/legal/docker-terms-service)
+[[IMG]](https://www.docker.com)
+[[IMG]](https://www.facebook.com/docker.run)
+[[IMG]](https://twitter.com/docker)
+[[IMG]](https://www.github.com/play-with-docker/play-with-docker.github.io)
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/
+/
+/about/
+#ops
+#dev
+/ops-stage1
+/ops-stage2
+/ops-stage3
+/dev-stage1
+/dev-stage2
+/dev-stage3
+/alacart
+https://twitter.com/intent/tweet?text=Play with Docker Classroom&url=https://training.play-with-docker.com/&via=docker&related=docker
+https://facebook.com/sharer.php?u=https://training.play-with-docker.com/
+https://plus.google.com/share?url=https://training.play-with-docker.com/
+http://www.linkedin.com/shareArticle?mini=true&url=https://training.play-with-docker.com/&title=Play%20with%20Docker%20Classroom&source=https://training.play-with-docker.com
+https://www.docker.com/dockercon/
+https://www.docker.com/dockercon/
+https://dockr.ly/slack
+https://www.docker.com/legal/docker-terms-service
+https://www.docker.com
+https://www.facebook.com/docker.run
+https://twitter.com/docker
+https://www.github.com/play-with-docker/play-with-docker.github.io
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$
+
+
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step3
+Branch 'step3' set up to track remote branch 'step3' from 'origin'.
+Switched to a new branch 'step3'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── Dockerfile
+├── README.md
+├── linkextractor.py
+├── main.py
+└── requirements.txt
+
+0 directories, 5 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat Dockerfile
+FROM       python:3
+LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+
+WORKDIR    /app
+COPY       requirements.txt /app/
+RUN        pip install -r requirements.txt
+
+COPY       *.py /app/
+RUN        chmod a+x *.py
+
+CMD        ["./main.py"]
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat main.py
+#!/usr/bin/env python
+
+from flask import Flask
+from flask import request
+from flask import jsonify
+from linkextractor import extract_links
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return "Usage: http://<hostname>[:<prt>]/api/<url>"
+
+@app.route("/api/<path:url>")
+def api(url):
+    qs = request.query_string.decode("utf-8")
+    if qs != "":
+        url += "?" + qs
+    links = extract_links(url)
+    return jsonify(links)
+
+app.run(host="0.0.0.0")
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker image build -t linkextractor:step3 .
+Sending build context to Docker daemon  115.2kB
+Step 1/8 : FROM       python:3
+ ---> a5d7930b60cc
+Step 2/8 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Using cache
+ ---> 1e03af00fbe8
+Step 3/8 : WORKDIR    /app
+ ---> Running in 136de68bce9a
+Removing intermediate container 136de68bce9a
+ ---> a3ea9019c5b1
+Step 4/8 : COPY       requirements.txt /app/
+ ---> e1d0f3e3e98b
+Step 5/8 : RUN        pip install -r requirements.txt
+ ---> Running in 90a5f901c538
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.10.0-py3-none-any.whl (97 kB)
+Collecting flask
+  Downloading Flask-2.0.2-py3-none-any.whl (95 kB)
+Collecting requests
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+Collecting soupsieve>1.2
+  Downloading soupsieve-2.3.1-py3-none-any.whl (37 kB)
+Collecting click>=7.1.2
+  Downloading click-8.0.3-py3-none-any.whl (97 kB)
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.0.2-py3-none-any.whl (288 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.10-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.3-py3-none-any.whl (61 kB)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.8-py2.py3-none-any.whl (138 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+Installing collected packages: MarkupSafe, Werkzeug, urllib3, soupsieve, Jinja2,itsdangerous, idna, click, charset-normalizer, certifi, requests, flask, beautifulsoup4
+Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.2 beautifulsoup4-4.10.0 certifi-2021.10.8 charset-normalizer-2.0.10 click-8.0.3 flask-2.0.2 idna-3.3 itsdangerous-2.0.1 requests-2.27.1 soupsieve-2.3.1 urllib3-1.26.8
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+Removing intermediate container 90a5f901c538
+ ---> aaa721c05499
+Step 6/8 : COPY       *.py /app/
+ ---> 10d8e4287c4f
+Step 7/8 : RUN        chmod a+x *.py
+ ---> Running in 26114fad4310
+Removing intermediate container 26114fad4310
+ ---> 92ea421395a0
+Step 8/8 : CMD        ["./main.py"]
+ ---> Running in 184cc0709ad2
+Removing intermediate container 184cc0709ad2
+ ---> c0820c21d95b
+Successfully built c0820c21d95b
+Successfully tagged linkextractor:step3
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container run -d -p 5000:5000 --name=linkextractor linkextractor:step3
+33a74f5cfe5184984c67e64204d6c776c04b607143724e71545baa2f5e62864a
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container ls
+CONTAINER ID   IMAGE                 COMMAND       CREATED         STATUS PORTS                    NAMES
+33a74f5cfe51   linkextractor:step3   "./main.py"   3 seconds ago   Up 2 seconds 0.0.0.0:5000->5000/tcp   linkextractor
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ curl -i http://localhost:5000/api/http://example.com/
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 79
+Server: Werkzeug/2.0.2 Python/3.10.1
+Date: Sat, 08 Jan 2022 06:30:08 GMT
+
+[{"href":"https://www.iana.org/domains/example","text":"More information..."}]
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container logs linkextractor
+ * Serving Flask app 'main' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
+172.17.0.1 - - [08/Jan/2022 06:30:08] "GET /api/http://example.com/ HTTP/1.1" 200 -
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker container rm -f linkextractor
+linkextractor
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$
+
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step5
+Branch 'step5' set up to track remote branch 'step5' from 'origin'.
+Switched to a new branch 'step5'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── README.md
+├── api
+│   ├── Dockerfile
+│   ├── linkextractor.py
+│   ├── main.py
+│   └── requirements.txt
+├── docker-compose.yml
+└── www
+    ├── Dockerfile
+    └── index.php
+
+2 directories, 8 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat www/Dockerfile
+FROM       php:7-apache
+LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+
+ENV        API_ENDPOINT="http://localhost:5000/api/"
+
+COPY       . /var/www/html/
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat api/main.py
+#!/usr/bin/env python
+
+import os
+import json
+import redis
+from flask import Flask
+from flask import request
+from linkextractor import extract_links
+
+app = Flask(__name__)
+redis_conn = redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
+
+@app.route("/")
+def index():
+    return "Usage: http://<hostname>[:<prt>]/api/<url>"
+
+@app.route("/api/<path:url>")
+def api(url):
+    qs = request.query_string.decode("utf-8")
+    if qs != "":
+        url += "?" + qs
+
+    jsonlinks = redis_conn.get(url)
+    if not jsonlinks:
+        links = extract_links(url)
+        jsonlinks = json.dumps(links, indent=2)
+        redis_conn.set(url, jsonlinks)
+
+    response = app.response_class(
+        status=200,
+        mimetype="application/json",
+        response=jsonlinks
+    )
+
+    return response
+
+app.run(host="0.0.0.0")
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat docker-compose.yml
+version: '3'
+
+services:
+  api:
+    image: linkextractor-api:step5-python
+    build: ./api
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+  web:
+    image: linkextractor-web:step5-php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:5000/api/
+  redis:
+    image: redis
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker-compose up -d --build
+Creating network "linkextractor_default" with the default driver
+Building api
+Step 1/9 : FROM       python:3
+ ---> a5d7930b60cc
+Step 2/9 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Using cache
+ ---> 1e03af00fbe8
+Step 3/9 : ENV        REDIS_URL="redis://localhost:6379"
+ ---> Running in b22861f325bf
+Removing intermediate container b22861f325bf
+ ---> c2acd3145b7a
+Step 4/9 : WORKDIR    /app
+ ---> Running in c8f6a2926d09
+Removing intermediate container c8f6a2926d09
+ ---> 7ea5336abb6a
+Step 5/9 : COPY       requirements.txt /app/
+ ---> 11526e6d27e9
+Step 6/9 : RUN        pip install -r requirements.txt
+ ---> Running in 7bdf81312bcc
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.10.0-py3-none-any.whl (97 kB)
+Collecting flask
+  Downloading Flask-2.0.2-py3-none-any.whl (95 kB)
+Collecting redis
+  Downloading redis-4.1.0-py3-none-any.whl (171 kB)
+Collecting requests
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+Collecting soupsieve>1.2
+  Downloading soupsieve-2.3.1-py3-none-any.whl (37 kB)
+Collecting Werkzeug>=2.0
+  Downloading Werkzeug-2.0.2-py3-none-any.whl (288 kB)
+Collecting click>=7.1.2
+  Downloading click-8.0.3-py3-none-any.whl (97 kB)
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+Collecting deprecated>=1.2.3
+  Downloading Deprecated-1.2.13-py2.py3-none-any.whl (9.6 kB)
+Collecting packaging>=21.3
+  Downloading packaging-21.3-py3-none-any.whl (40 kB)
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.10-py3-none-any.whl (39 kB)
+Collecting certifi>=2017.4.17
+  Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.8-py2.py3-none-any.whl (138 kB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.3-py3-none-any.whl (61 kB)
+Collecting wrapt<2,>=1.10
+  Downloading wrapt-1.13.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (81 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Downloading pyparsing-3.0.6-py3-none-any.whl (97 kB)
+Installing collected packages: wrapt, pyparsing, MarkupSafe, Werkzeug, urllib3, soupsieve, packaging, Jinja2, itsdangerous, idna, deprecated, click, charset-normalizer, certifi, requests, redis, flask, beautifulsoup4
+Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.2 beautifulsoup4-4.10.0 certifi-2021.10.8 charset-normalizer-2.0.10 click-8.0.3 deprecated-1.2.13 flask-2.0.2 idna-3.3 itsdangerous-2.0.1 packaging-21.3 pyparsing-3.0.6 redis-4.1.0 requests-2.27.1 soupsieve-2.3.1 urllib3-1.26.8 wrapt-1.13.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: You are using pip version 21.2.4; however, version 21.3.1 is available.
+You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+Removing intermediate container 7bdf81312bcc
+ ---> 51645fb4d904
+Step 7/9 : COPY       *.py /app/
+ ---> 68c70925e19c
+Step 8/9 : RUN        chmod a+x *.py
+ ---> Running in d2098464e0f1
+Removing intermediate container d2098464e0f1
+ ---> 74ef1db25caf
+Step 9/9 : CMD        ["./main.py"]
+ ---> Running in 03ff07d8bf66
+Removing intermediate container 03ff07d8bf66
+ ---> f71f264d1c31
+Successfully built f71f264d1c31
+Successfully tagged linkextractor-api:step5-python
+Building web
+Step 1/4 : FROM       php:7-apache
+ ---> 0a4f19d60710
+Step 2/4 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Running in 7aa4c3af5589
+Removing intermediate container 7aa4c3af5589
+ ---> 3dc4f1249e70
+Step 3/4 : ENV        API_ENDPOINT="http://localhost:5000/api/"
+ ---> Running in f81d0a2dadd9
+Removing intermediate container f81d0a2dadd9
+ ---> 7b837ebdc03c
+Step 4/4 : COPY       . /var/www/html/
+ ---> f74a451328b4
+Successfully built f74a451328b4
+Successfully tagged linkextractor-web:step5-php
+Pulling redis (redis:)...
+latest: Pulling from library/redis
+a2abf6c4d29d: Already exists
+c7a4e4382001: Pull complete
+4044b9ba67c9: Pull complete
+c8388a79482f: Pull complete
+413c8bb60be2: Pull complete
+1abfd3011519: Pull complete
+Digest: sha256:db485f2e245b5b3329fdc7eff4eb00f913e09d8feb9ca720788059fdc2ed8339
+Status: Downloaded newer image for redis:latest
+Creating linkextractor_web_1   ... done
+Creating linkextractor_redis_1 ... done
+Creating linkextractor_api_1   ... done
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker-compose exec redis redis-cli monitor
+OK
+
+^C[node1] (local) root@192.168.0.28 ~/linkextractor
+$ sed -i 's/Link Extractor/Super Link Extractor/g' www/index.php
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git reset --hard
+HEAD is now at 3dbb7eb Synchronize branch step5
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker-compose down
+Stopping linkextractor_api_1   ... done
+Stopping linkextractor_redis_1 ... done
+Stopping linkextractor_web_1   ... done
+Removing linkextractor_api_1   ... done
+Removing linkextractor_redis_1 ... done
+Removing linkextractor_web_1   ... done
+Removing network linkextractor_default
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$
+
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ git checkout step6
+Branch 'step6' set up to track remote branch 'step6' from 'origin'.
+Switched to a new branch 'step6'
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ tree
+.
+├── README.md
+├── api
+│   ├── Dockerfile
+│   ├── Gemfile
+│   └── linkextractor.rb
+├── docker-compose.yml
+├── logs
+└── www
+    ├── Dockerfile
+    └── index.php
+
+3 directories, 7 files
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat api/linkextractor.rb
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require "sinatra"
+require "open-uri"
+require "uri"
+require "nokogiri"
+require "json"
+require "redis"
+
+set :protection, :except=>:path_traversal
+
+redis = Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
+
+Dir.mkdir("logs") unless Dir.exist?("logs")
+cache_log = File.new("logs/extraction.log", "a")
+
+get "/" do
+  "Usage: http://<hostname>[:<prt>]/api/<url>"
+end
+
+get "/api/*" do
+  url = [params['splat'].first, request.query_string].reject(&:empty?).join("?")
+  cache_status = "HIT"
+  jsonlinks = redis.get(url)
+  if jsonlinks.nil?
+    cache_status = "MISS"
+    jsonlinks = JSON.pretty_generate(extract_links(url))
+    redis.set(url, jsonlinks)
+  end
+
+  cache_log.puts "#{Time.now.to_i}\t#{cache_status}\t#{url}"
+
+  status 200
+  headers "content-type" => "application/json"
+  body jsonlinks
+end
+
+def extract_links(url)
+  links = []
+  doc = Nokogiri::HTML(open(url))
+  doc.css("a").each do |link|
+    text = link.text.strip.split.join(" ")
+    begin
+      links.push({
+        text: text.empty? ? "[IMG]" : text,
+        href: URI.join(url, link["href"])
+      })
+    rescue
+    end
+  end
+  links
+end
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat api/Dockerfile
+FROM       ruby:2.6
+LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+
+ENV        LANG C.UTF-8
+ENV        REDIS_URL="redis://localhost:6379"
+
+WORKDIR    /app
+COPY       Gemfile /app/
+RUN        bundle install
+
+COPY       linkextractor.rb /app/
+RUN        chmod a+x linkextractor.rb
+
+CMD        ["./linkextractor.rb", "-o", "0.0.0.0"]
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat docker-compose.yml
+version: '3'
+
+services:
+  api:
+    image: linkextractor-api:step6-ruby
+    build: ./api
+    ports:
+      - "4567:4567"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./logs:/app/logs
+  web:
+    image: linkextractor-web:step6-php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:4567/api/
+  redis:
+    image: redis
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker-compose up -d --build
+Creating network "linkextractor_default" with the default driver
+Building api
+Step 1/10 : FROM       ruby:2.6
+2.6: Pulling from library/ruby
+0e29546d541c: Already exists
+9b829c73b52b: Already exists
+cb5b7ae36172: Already exists
+6494e4811622: Already exists
+6f9f74896dfa: Already exists
+8692434624fe: Pull complete
+9ffb5805107e: Pull complete
+be7151ad9312: Pull complete
+Digest: sha256:634a743c2cb4b51cc9d887103c383e70aef4040b0540fa295d7aed9659320c6d
+Status: Downloaded newer image for ruby:2.6
+ ---> 9a2d45e2219e
+Step 2/10 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Running in cab6e2803ef0
+Removing intermediate container cab6e2803ef0
+ ---> fbeb344fda63
+Step 3/10 : ENV        LANG C.UTF-8
+ ---> Running in de80326b091a
+Removing intermediate container de80326b091a
+ ---> e8e9c3a46e89
+Step 4/10 : ENV        REDIS_URL="redis://localhost:6379"
+ ---> Running in 82790ef7dea3
+Removing intermediate container 82790ef7dea3
+ ---> ff127ee89c3c
+Step 5/10 : WORKDIR    /app
+ ---> Running in a48db6597a67
+Removing intermediate container a48db6597a67
+ ---> cfe1a677bdd7
+Step 6/10 : COPY       Gemfile /app/
+ ---> aee033b59ca5
+Step 7/10 : RUN        bundle install
+ ---> Running in bbccc812c560
+Fetching gem metadata from https://rubygems.org/.......
+Resolving dependencies...
+Using bundler 1.17.2
+Fetching mini_portile2 2.7.1
+Installing mini_portile2 2.7.1
+Fetching ruby2_keywords 0.0.5
+Installing ruby2_keywords 0.0.5
+Fetching mustermann 1.1.1
+Installing mustermann 1.1.1
+Fetching racc 1.6.0
+Installing racc 1.6.0 with native extensions
+Fetching nokogiri 1.13.0 (x86_64-linux)
+Installing nokogiri 1.13.0 (x86_64-linux)
+Fetching rack 2.2.3
+Installing rack 2.2.3
+Fetching rack-protection 2.1.0
+Installing rack-protection 2.1.0
+Fetching redis 4.5.1
+Installing redis 4.5.1
+Fetching tilt 2.0.10
+Installing tilt 2.0.10
+Fetching sinatra 2.1.0
+Installing sinatra 2.1.0
+Bundle complete! 3 Gemfile dependencies, 11 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+Removing intermediate container bbccc812c560
+ ---> e8174979aa69
+Step 8/10 : COPY       linkextractor.rb /app/
+ ---> d13666a54794
+Step 9/10 : RUN        chmod a+x linkextractor.rb
+ ---> Running in 48542c83f872
+Removing intermediate container 48542c83f872
+ ---> fda7b69547fe
+Step 10/10 : CMD        ["./linkextractor.rb", "-o", "0.0.0.0"]
+ ---> Running in fc5c2af9139b
+Removing intermediate container fc5c2af9139b
+ ---> 10fd916ada2a
+Successfully built 10fd916ada2a
+Successfully tagged linkextractor-api:step6-ruby
+Building web
+Step 1/3 : FROM       php:7-apache
+ ---> 0a4f19d60710
+Step 2/3 : LABEL      maintainer="Sawood Alam <@ibnesayeed>"
+ ---> Using cache
+ ---> 3dc4f1249e70
+Step 3/3 : COPY       . /var/www/html/
+ ---> 830fa693b52c
+Successfully built 830fa693b52c
+Successfully tagged linkextractor-web:step6-php
+Creating linkextractor_api_1   ... done
+Creating linkextractor_redis_1 ... done
+Creating linkextractor_web_1   ... done
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ curl -i http://localhost:4567/api/http://example.com/
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 97
+X-Content-Type-Options: nosniff
+Server: WEBrick/1.4.4 (Ruby/2.6.9/2021-11-24)
+Date: Sat, 08 Jan 2022 06:46:44 GMT
+Connection: Keep-Alive
+
+[
+  {
+    "text": "More information...",
+    "href": "https://www.iana.org/domains/example"
+  }
+][node1] (local) root@192.168.0.28 ~/linkextractor
+$
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ docker-compose down
+Stopping linkextractor_web_1   ... done
+Stopping linkextractor_api_1   ... done
+Stopping linkextractor_redis_1 ... done
+Removing linkextractor_web_1   ... done
+Removing linkextractor_api_1   ... done
+Removing linkextractor_redis_1 ... done
+Removing network linkextractor_default
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$ cat logs/extraction.log
+1641624404      MISS    http://example.com/
+1641624536      MISS    http://example.com/
+1641624544      MISS    https://www.facebook.com/
+1641624604      HIT     https://www.facebook.com/
+[node1] (local) root@192.168.0.28 ~/linkextractor
+$

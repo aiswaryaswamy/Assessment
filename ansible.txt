@@ -1,0 +1,113 @@
+aiswarya@DESKTOP-923497U:~$ ansible --version
+ansible [core 2.12.1]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/aiswarya/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /home/aiswarya/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.8.10 (default, Jun  2 2021, 10:49:15) [GCC 9.4.0]
+  jinja version = 2.10.1
+  libyaml = True
+aiswarya@DESKTOP-923497U:~$ ansible-galaxy -h
+usage: ansible-galaxy [-h] [--version] [-v] TYPE ...
+
+Perform various Role and Collection related operations.
+
+positional arguments:
+  TYPE
+    collection   Manage an Ansible Galaxy collection.
+    role         Manage an Ansible Galaxy role.
+
+optional arguments:
+  --version      show program's version number, config file location, configured module search path, module location,
+                 executable location and exit
+  -h, --help     show this help message and exit
+  -v, --verbose  verbose mode (-vvv for more, -vvvv to enable connection debugging)
+aiswarya@DESKTOP-923497U:~$ ansible-galaxy init --force --offline aiswaryarole
+- Role aiswaryarole was created successfully
+aiswarya@DESKTOP-923497U:~$ tree aiswaryarole/
+aiswaryarole/
+├── README.md
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+
+8 directories, 8 files
+aiswarya@DESKTOP-923497U:~$ cd \aiswaryarole
+aiswarya@DESKTOP-923497U:~/aiswaryarole$ ls
+README.md  defaults  files  handlers  meta  tasks  templates  tests  vars
+aiswarya@DESKTOP-923497U:~/aiswaryarole$ cd
+
+aiswarya@DESKTOP-923497U:~$ mkdir aiswarya_playbook
+aiswarya@DESKTOP-923497U:~$ cd aiswarya_playbook
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ nano aiswarya_orchestrate.yml
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ ansible-galaxy init --force --offline install-tomcat
+- Role install-tomcat was created successfully
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ ansible-galaxy init --force --offline start-tomcat
+- Role start-tomcat was created successfully
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ cd install-tomcat
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/install-tomcat$ cd tasks
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/install-tomcat/tasks$ ls
+main.yml
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/install-tomcat/tasks$ nano main.yml
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/install-tomcat/tasks$ cd ..
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/install-tomcat$ cd ..
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ cd start-tomcat
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/start-tomcat$ cd tasks
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/start-tomcat/tasks$ nano main.yml
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook/start-tomcat/tasks$ cd ../..
+aiswarya@DESKTOP-923497U:~/aiswarya_playbook$ sudo ansible-playbook -i hosts aiswarya_orchestrate.yml -vvv
+[sudo] password for aiswarya:
+ansible-playbook [core 2.12.1]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.8.10 (default, Jun  2 2021, 10:49:15) [GCC 9.4.0]
+  jinja version = 2.10.1
+  libyaml = True
+Using /etc/ansible/ansible.cfg as config file
+host_list declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+script declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+auto declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+yaml declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+ini declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+Skipping due to inventory source not existing or not being readable by the current user
+toml declined parsing /home/aiswarya/aiswarya_playbook/hosts as it did not pass its verify_file() method
+[WARNING]: Unable to parse /home/aiswarya/aiswarya_playbook/hosts as an inventory source
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match
+'all'
+Orchestrate.yaml
+---
+- hosts: tomcat-node
+  roles:
+   - {role: install-tomcat}
+   - {role: start-tomcat}
+-
+  block:
+   - name: Start tomcat
+     command: <path of tomcat>/bin/startup.sh
+     register: Output
+     become: true
+  always:
+   - debug:
+      msg:
+       - "Start Tomcat task ended with message: {{Output}}"
+       - "Tomcat started - {{Output.changed}}"

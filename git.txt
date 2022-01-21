@@ -1,0 +1,31 @@
+Microsoft Windows [Version 10.0.19044.1466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git add .
+
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git commit -m "simplewhale"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git checkout -b aiswarya
+Switched to a new branch 'aiswarya'
+
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git push https://github.com/aiswaryaswamy/simplewhale1.git aiswarya
+Enumerating objects: 152, done.
+Counting objects: 100% (152/152), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (83/83), done.
+Writing objects: 100% (152/152), 115.01 KiB | 10.46 MiB/s, done.
+Total 152 (delta 33), reused 152 (delta 33), pack-reused 0
+remote: Resolving deltas: 100% (33/33), done.
+To https://github.com/aiswaryaswamy/simplewhale1.git
+ * [new branch]      aiswarya -> aiswarya
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git status
+On branch aiswarya
+nothing to commit, working tree clean
+
+C:\Users\LENOVO\Desktop\New folder (2)\simplewhale1\SimpleWhaleDemo>git branch
+* aiswarya
+  master
